@@ -17,7 +17,7 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
     TodoDatabase theTodoDatabase;
-    private Button button, delButton;
+    private Button delButton;
     private EditText editText;
     private ListView listView;
 
@@ -29,7 +29,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         editText = findViewById(R.id.editText);
         editText.setHint("Add a todo!");
-        button = findViewById(R.id.button);
         delButton = findViewById(R.id.delButton);
         listView = findViewById(R.id.listView);
         listView.setLongClickable(true);
@@ -62,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
         while(todo.moveToNext()) {
             todoArray.add(todo.getString(1));
         }
+
         TodoAdaptor theAdapter = new TodoAdaptor(this, todo);
 //        ListAdapter adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, todoArray);
 
