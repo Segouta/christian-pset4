@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.AdapterView;
 
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 
 import android.widget.ListView;
@@ -20,8 +21,9 @@ public class MainActivity extends AppCompatActivity {
     private Button delButton;
     private EditText editText;
     private ListView listView;
+    private TodoAdaptor theAdapter;
 
-    String deleteString = "";
+    long global_id = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,14 +41,14 @@ public class MainActivity extends AppCompatActivity {
 
         listView.setOnItemLongClickListener(new ClickSomeLong());
 
-        putStuffInList();
+        updateData();
 
         theTodoDatabase = TodoDatabase.getInstance(getApplicationContext());
 
     }
 
     public void addTodo(String todo) {
-        boolean putInDatabase = theTodoDatabase.addTodo(todo);
+        boolean putInDatabase = theTodoDatabase.insert(todo);
         if (putInDatabase) {
             Toast.makeText(this, "Successfully inserted dat ting", Toast.LENGTH_SHORT).show();
         }
@@ -55,14 +57,14 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void putStuffInList() {
+    private void updateData() {
         Cursor todo = theTodoDatabase.getTodos();
         ArrayList<String> todoArray = new ArrayList<String>();
         while(todo.moveToNext()) {
             todoArray.add(todo.getString(1));
         }
 
-        TodoAdaptor theAdapter = new TodoAdaptor(this, todo);
+        theAdapter = new TodoAdaptor(this, todo);
 //        ListAdapter adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, todoArray);
 
         listView.setAdapter(theAdapter);
@@ -73,7 +75,8 @@ public class MainActivity extends AppCompatActivity {
         String newTodo = editText.getText().toString();
         if (editText.length() != 0) {
             addTodo(newTodo);
-            putStuffInList();
+            editText.setText("");
+            updateData();
         }
         else {
             Toast.makeText(this, "text field was empty oen", Toast.LENGTH_SHORT).show();
@@ -81,8 +84,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void deleteButtonClicked(View view) {
-        theTodoDatabase.deleteThis(deleteString);
-        putStuffInList();
+        theTodoDatabase.deleteThis(global_id);
+        updateData();
         delButton.setVisibility(View.INVISIBLE);
     }
 
@@ -92,11 +95,23 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
 
+            global_id = id;
             System.out.println(id);
             delButton.setVisibility(View.VISIBLE);
-            editText.setHint("---");
-            deleteString = parent.getItemAtPosition(position).toString();
+            editText.setHint("Add a todo!");
+//            deleteString = parent.getItemAtPosition(position).toString();
             return true;
+        }
+    }
+
+    public void onListItemClick(View view) {
+
+        Toast.makeText(this, "you clicked somehere", Toast.LENGTH_SHORT).show();
+
+
+        if (view != null) {
+            CheckBox checkBox = (CheckBox)view.findViewById(R.id.checkBox);
+            checkBox.setChecked(!checkBox.isChecked());
         }
     }
 }

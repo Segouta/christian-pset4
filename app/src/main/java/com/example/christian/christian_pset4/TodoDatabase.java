@@ -34,7 +34,7 @@ public class TodoDatabase extends SQLiteOpenHelper {
 
     }
 
-    public boolean addTodo(String todo) {
+    public boolean insert(String todo) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(COL2, todo);
@@ -66,8 +66,8 @@ public class TodoDatabase extends SQLiteOpenHelper {
         return entries;
     }
 
-    public void deleteThis(String selected) {
+    public void deleteThis(long selected) {
         SQLiteDatabase db = this.getWritableDatabase();
-        db.execSQL("DELETE FROM " + TABLE_NAME + " WHERE " + COL2 + " = '" + selected + "';");
+        db.execSQL("DELETE FROM " + TABLE_NAME + " WHERE " + COL1 + " = '" + selected + "';");
     }
 }
