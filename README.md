@@ -9,6 +9,8 @@ Date:             23-11-2017
 
 Subject:          Native App Studio UvA
 
+Better code:      [![BCH compliance](https://bettercodehub.com/edge/badge/Segouta/christian-pset4?branch=master)](https://bettercodehub.com/)
+
 ##
 This app also memorizes everything in a database!
 ##
