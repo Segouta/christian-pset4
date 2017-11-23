@@ -64,10 +64,9 @@ public class MainActivity extends AppCompatActivity {
         }
 
         theAdapter = new TodoAdaptor(this, todo);
-//        ListAdapter adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, todoArray);
 
         listView.setAdapter(theAdapter);
-//        listView.setAdapter(adapter);
+
     }
 
     public void buttonClicked(View view) {
