@@ -48,8 +48,6 @@ public class TodoDatabase extends SQLiteOpenHelper {
         else {
             return true;
         }
-
-
     }
 
     public static TodoDatabase getInstance(Context context) {
@@ -69,5 +67,10 @@ public class TodoDatabase extends SQLiteOpenHelper {
     public void deleteThis(long selected) {
         SQLiteDatabase db = this.getWritableDatabase();
         db.execSQL("DELETE FROM " + TABLE_NAME + " WHERE " + COL1 + " = '" + selected + "';");
+    }
+
+    public void checkboxState(long selected) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL("UPDATE " + TABLE_NAME + " SET " + COL3 + " = (CASE " + COL3 + " WHEN 1 THEN 0 ELSE 1 END) WHERE " + COL1 + " = '" + selected + "';");
     }
 }

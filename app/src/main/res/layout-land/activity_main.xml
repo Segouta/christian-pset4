@@ -7,11 +7,9 @@
     tools:context="com.example.christian.christian_pset4.MainActivity">
 
     <android.support.constraint.ConstraintLayout
-        android:id="@+id/constraintLayout"
-        android:layout_width="409dp"
-        android:layout_height="68dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
+        android:id="@+id/constraintLayout2"
+        android:layout_width="690dp"
+        android:layout_height="65dp"
         android:background="#eeeeee"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,8 +20,8 @@
             android:layout_width="97dp"
             android:layout_height="48dp"
             android:layout_marginBottom="8dp"
-            android:layout_marginEnd="36dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginEnd="124dp"
+            android:layout_marginTop="4dp"
             android:backgroundTint="@color/colorAccent"
             android:onClick="deleteButtonClicked"
             android:text="Delete!"
@@ -40,38 +38,39 @@
             android:layout_marginBottom="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="4dp"
             android:gravity="center_vertical"
             android:text="JUST DO IT"
             android:textColor="#222222"
             android:textSize="30sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/delButton"
-            app:layout_constraintHorizontal_bias="0.869"
+            app:layout_constraintHorizontal_bias="0.629"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0" />
     </android.support.constraint.ConstraintLayout>
 
     <ListView
         android:id="@+id/listView"
-        android:layout_width="395dp"
-        android:layout_height="498dp"
+        android:layout_width="677dp"
+        android:layout_height="244dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout3"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout2" />
 
     <android.support.constraint.ConstraintLayout
-        android:id="@+id/constraintLayout4"
-        android:layout_width="410dp"
+        android:id="@+id/constraintLayout3"
+        android:layout_width="692dp"
         android:layout_height="76dp"
+        android:layout_marginEnd="8dp"
         android:background="#eeeeee"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.294"
         app:layout_constraintStart_toStartOf="parent">
 
         <EditText
@@ -86,22 +85,24 @@
             android:inputType="textPersonName"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/button"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_bias="0.965"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.571" />
 
         <Button
             android:id="@+id/button"
             android:layout_width="128dp"
             android:layout_height="45dp"
             android:layout_marginBottom="8dp"
-            android:layout_marginEnd="4dp"
+            android:layout_marginEnd="164dp"
             android:layout_marginTop="8dp"
             android:onClick="buttonClicked"
             android:text="Add!"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.533" />
     </android.support.constraint.ConstraintLayout>
 
 </android.support.constraint.ConstraintLayout>
